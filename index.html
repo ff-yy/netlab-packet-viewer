@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Packet Viewer</title>
+</head>
+<body>
+
+<p>Packet Viewer</p>
+
+<p>
+<label>Packet(16): <input type="text" id="inputText"></label>
+<input type="button" value="表示" id="checkButton">
+</p>
+
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;margin:0px auto;}
+    .tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#444;
+      font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{background-color:#409cff;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#fff;
+      font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-kqvb{background-color:#d2e4fc;border-color:#333333;color:#000000;text-align:center;vertical-align:top}
+    .tg .tg-5c76{background-color:#ebf5ff;border-color:#333333;color:#000000;text-align:center;vertical-align:top}
+    .tg {
+    table-layout: fixed;
+    width: 800px;
+    word-wrap: break-word;
+    }
+</style>
+    <table class="tg" id="table4">
+    <thead>
+        <tr>
+            <th class="tg-baqh" colspan="8"><span>IPv4</span></th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tg-kqvb">バージョン(4bit)</td>
+        <td class="tg-kqvb">ヘッダ長(4bit)</td>
+        <td class="tg-kqvb" colspan="2">サービスタイプ(8bit)</td>
+        <td class="tg-kqvb" colspan="4">パケット長(16bit)</td>
+      </tr>
+      <tr>
+        <td class="tg-5c76" id="version">version</td>
+        <td class="tg-5c76" id="headLength">headLength</td>
+        <td class="tg-5c76" id="serviceType" colspan="2">serviceType</td>
+        <td class="tg-5c76" id="packetLength" colspan="4">packetLength</td>
+      </tr>
+      <tr>
+        <td class="tg-kqvb" colspan="4">識別子(16bit)</td>
+        <td class="tg-kqvb" colspan="4">フラグ(16bit)</td>
+      </tr>
+      <tr>
+        <td class="tg-5c76" id="identification" colspan="4">idenfitication</td>
+        <td class="tg-5c76" id="flags" colspan="4">flags</td>
+      </tr>
+      <tr>
+        <td class="tg-kqvb" colspan="2">TTL(8bit)</td>
+        <td class="tg-kqvb" colspan="2"><span style="font-weight:400;font-style:normal">プロトコル番号(8bit)</span></td>
+        <td class="tg-kqvb" colspan="4"><span style="font-weight:normal">ヘッダチェックサム(16bit)</span></td>
+      </tr>
+      <tr>
+        <td class="tg-5c76" id="ttl" colspan="2">ttl</td>
+        <td class="tg-5c76" id="protocol" colspan="2">protocol</td>
+        <td class="tg-5c76" id="headerChecksum" colspan="4">headerChecksum</td>
+      </tr>
+      <tr>
+        <td class="tg-kqvb" colspan="8"><span style="font-weight:normal">送信元IPアドレス(32bit)</span></td>
+      </tr>
+      <tr>
+        <td class="tg-5c76" id="srcIp" colspan="8">srcIp</td>
+      </tr>
+      <tr>
+        <td class="tg-kqvb" colspan="8">宛先IPアドレス(32bit)</td>
+      </tr>
+      <tr>
+        <td class="tg-5c76" id="dstIp" colspan="8">dstIp</td>
+      </tr>
+      <tr>
+        <td class="tg-kqvb" colspan="8"><span style="font-weight:normal">オプション(32bit*n)</span></td>
+      </tr>
+      <tr>
+        <td class="tg-5c76" id="option" colspan="8">未対応</td>
+      </tr>
+      <tr>
+        <td class="tg-kqvb" colspan="8"><span style="font-weight:normal">データ本体</span></td>
+      </tr>
+      <tr>
+        <td class="tg-5c76" id="data" colspan="8">data</td>
+      </tr>
+    </tbody>
+    </table>
+
+
+
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;margin:0px auto;}
+    .tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#444;
+        font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{background-color:#409cff;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#fff;
+        font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-bbf0{background-color:#d2e4fc;border-color:#333333;color:#000000;text-align:center;vertical-align:top}
+    .tg .tg-2nhn{background-color:#ebf5ff;border-color:#333333;color:#000000;text-align:center;vertical-align:top}
+    .tg .tg-kqvb{background-color:#d2e4fc;border-color:#333333;color:#000000;text-align:center;vertical-align:top}
+    .tg .tg-5c76{background-color:#ebf5ff;border-color:#333333;color:#000000;text-align:center;vertical-align:top}
+</style>
+    <div class="tg-wrap"><table class="tg" id="table6">
+    <thead>
+        <tr>
+            <th class="tg-baqh" colspan="8"><span>IPv6</span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td class="tg-kqvb">バージョン(4bit)</td>
+        <td class="tg-kqvb">トラフィッククラス(8bit)</td>
+        <td class="tg-kqvb" colspan="6">フローラベル(20bit)</td>
+        </tr>
+        <tr>
+        <td class="tg-5c76" id="version6">version</td>
+        <td class="tg-5c76" id="trafficClass6">trafficClass</td>
+        <td class="tg-5c76" colspan="6" id="flowLabel6">flowLabel</td>
+        </tr>
+        <tr>
+        <td class="tg-kqvb" colspan="2">ペイロード長(16bit)</td>
+        <td class="tg-kqvb" colspan="2">ネクストヘッダ(8bit)</td>
+        <td class="tg-kqvb" colspan="4">ホップリミット(8bit)</td>
+        </tr>
+        <tr>
+        <td class="tg-5c76" colspan="2" id="payloadLength6">payloadLength</td>
+        <td class="tg-5c76" colspan="2" id="nextHeader6">nextHeader</td>
+        <td class="tg-5c76" colspan="4" id="hopLimit6">hopLimit</td>
+        </tr>
+        <tr>
+        <td class="tg-kqvb" colspan="8"><span style="font-weight:normal">送信元IPアドレス(128bit)</span></td>
+        </tr>
+        <tr>
+        <td class="tg-5c76" colspan="8" rowspan="4" id="srcIp6">srcIP</td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        <td class="tg-bbf0" colspan="8">宛先IPアドレス(128bit)</td>
+        </tr>
+        <tr>
+        <td class="tg-2nhn" colspan="8" rowspan="4" id="dstIp6">dstIP</td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        <td class="tg-kqvb" colspan="8"><span style="font-weight:normal">データ本体</span></td>
+        </tr>
+        <tr>
+        <td class="tg-5c76" colspan="8" id="data6">data</td>
+        </tr>
+    </tbody>
+    </table></div>
+
+
+<script type="text/javascript" src="script.js"></script>
+
+
+</body>
+</html>
